@@ -1,9 +1,9 @@
 # Application Configuration
 
 ## Server Settings
-- Port: 3000
-- Host: localhost
-- Environment: development
+- Port: 4000
+- Host: staging.example.com
+- Environment: staging
 
 ## Database Settings
 - Type: PostgreSQL
