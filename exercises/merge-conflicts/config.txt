@@ -1,0 +1,22 @@
+# Application Configuration
+
+## Server Settings
+- Port: 3000
+- Host: localhost
+- Environment: development
+
+## Database Settings
+- Type: PostgreSQL
+- Host: localhost
+- Port: 5432
+- Database: backend_db
+
+## API Settings
+- Version: v1
+- Base URL: /api/v1
+- Rate Limit: 100 requests/minute
+
+## Security Settings
+- JWT Secret: your-secret-key-here
+- Token Expiration: 24h
+- Password Min Length: 8
