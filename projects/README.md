@@ -33,4 +33,4 @@ project-name/
 ├── .env.example
 ├── README.md
 └── package.json / requirements.txt
-```
+```\\
