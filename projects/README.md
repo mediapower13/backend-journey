@@ -21,16 +21,4 @@ This directory contains hands-on projects to practice backend development skills
 - Tags and categories
 - Search functionality
 
-## Project Structure Template
-```
-project-name/
-├── src/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   └── utils/
-├── tests/
-├── .env.example
-├── README.md
-└── package.json / requirements.txt
-```\\
+#
