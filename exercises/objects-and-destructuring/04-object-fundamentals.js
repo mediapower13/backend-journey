@@ -8,9 +8,9 @@ console.log("=".repeat(60));
 console.log("       OBJECT FUNDAMENTALS - USER OBJECT");
 console.log("=".repeat(60));
 
-// ============================================================
+// 
 // SECTION 1: USER OBJECT WITH NESTED PROPERTIES & METHODS
-// ============================================================
+// 
 console.log("\n📦 SECTION 1: Full User Object\n");
 
 const user = {
