@@ -87,11 +87,11 @@ const user = {
     return `✅ "${normalized}" added! Hobbies: [${this.hobbies.join(", ")}]`;
   },
 
-  // ----------------------------------------------------------
+  // 
   // METHOD 4: getAddress()
   // Returns the address in different formats
   // Options: "full" | "short" | "city"
-  // ----------------------------------------------------------
+  // 
   getAddress(format = "full") {
     const { street, city, state, country, zipCode } = this.address;
     const formats = {
