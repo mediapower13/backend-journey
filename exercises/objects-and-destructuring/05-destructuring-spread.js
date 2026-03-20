@@ -8,9 +8,7 @@ console.log("=".repeat(60));
 console.log("   DESTRUCTURING & SPREAD OPERATOR PRACTICE");
 console.log("=".repeat(60));
 
-// ============================================================
 // SECTION 1: BASIC OBJECT DESTRUCTURING
-// ============================================================
 console.log("\n📦 SECTION 1: Basic Object Destructuring\n");
 
 const userProfile = {
@@ -54,9 +52,7 @@ const {
 console.log("\nRenaming + Defaults combined:");
 console.log(`  myName=${myName}  mySalary=${mySalary}  myDept=${myDept}`);
 
-// ============================================================
 // SECTION 2: NESTED OBJECT DESTRUCTURING
-// ============================================================
 console.log("\n🏗️  SECTION 2: Nested Object Destructuring\n");
 
 const employee = {
@@ -100,9 +96,7 @@ const {
 console.log("\nNested with defaults:");
 console.log(`  zip=${zip}  tertiarySkill=${tertiarySkill}`);
 
-// ============================================================
 // SECTION 3: ARRAY DESTRUCTURING
-// ============================================================
 console.log("\n📋 SECTION 3: Array Destructuring\n");
 
 const colors  = ["red", "green", "blue", "yellow", "purple"];
@@ -139,9 +133,7 @@ const [[r1c1, r1c2], [r2c1, r2c2], [r3c1,, r3c3]] = matrix;
 console.log("\nNested matrix:");
 console.log(`  Row1:[${r1c1},${r1c2}]  Row2:[${r2c1},${r2c2}]  Row3:[${r3c1},_,${r3c3}]`);
 
-// ============================================================
 // SECTION 4: FUNCTION PARAMETER DESTRUCTURING
-// ============================================================
 console.log("\n⚙️  SECTION 4: Function Parameter Destructuring\n");
 
 // ✅ Object parameter
@@ -203,9 +195,7 @@ processOrder({
   totals:   { subtotal: 1500, tax: 75, total: 1575 },
 });
 
-// ============================================================
 // SECTION 5: SPREAD OPERATOR — OBJECTS
-// ============================================================
 console.log("\n🌊 SECTION 5: Spread — Objects\n");
 
 const baseUser    = { id: 1, role: "user",  isActive: true, createdAt: "2026-01-01" };
@@ -242,9 +232,7 @@ const extras   = { adminSince: "2025-01-01", canDelete: true };
 const condUser = { ...personalInfo, ...(isAdmin && extras) };
 console.log("\nConditional spread: adminSince =", condUser.adminSince);
 
-// ============================================================
 // SECTION 6: SPREAD OPERATOR — ARRAYS
-// ============================================================
 console.log("\n📦 SECTION 6: Spread — Arrays\n");
 
 const fruits = ["apple", "banana", "cherry"];
@@ -280,9 +268,7 @@ const dupes  = [1, 2, 2, 3, 3, 3, 4, 5, 5];
 const unique = [...new Set(dupes)];
 console.log("Remove dupes:", unique);
 
-// ============================================================
 // SECTION 7: REST PARAMETERS
-// ============================================================
 console.log("\n🔁 SECTION 7: Rest Parameters\n");
 
 // ✅ Rest in functions
@@ -306,9 +292,7 @@ console.log("\nObject rest: id=%d  role=%s  profileRest=", restId, restRole, pro
 const [p, q, ...remaining] = [10, 20, 30, 40, 50];
 console.log("Array rest: p=%d  q=%d  remaining=[%s]", p, q, remaining);
 
-// ============================================================
 // SECTION 8: REAL-WORLD EXAMPLES
-// ============================================================
 console.log("\n🌍 SECTION 8: Real-World Examples\n");
 
 // ✅ 8.1 API Response destructuring
@@ -410,7 +394,6 @@ console.log("  isLoading (step 1):", withLoading.isLoading);
 console.log("  user (step 2)     :", withUser.user);
 console.log("  pagination        :", withUser.pagination);
 
-// ============================================================
 console.log("\n" + "=".repeat(60));
 console.log("✅  DESTRUCTURING & SPREAD COMPLETE");
 console.log("=".repeat(60));
