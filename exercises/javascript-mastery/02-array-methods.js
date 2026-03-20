@@ -5,9 +5,7 @@
 
 console.log("=== ARRAY METHODS PRACTICE ===\n");
 
-// ============================================
 // Student Dataset
-// ============================================
 
 const students = [
     { id: 1, name: "Alice Johnson", age: 20, grade: 85, major: "Computer Science", gpa: 3.5, active: true },
@@ -25,9 +23,7 @@ const students = [
 console.log("Student Dataset:");
 console.table(students);
 
-// ============================================
 // Exercise 1: FILTER METHOD
-// ============================================
 console.log("\n\n=== Exercise 1: FILTER METHOD ===\n");
 
 // 1.1: Filter active students
@@ -56,9 +52,7 @@ console.log("\n--- Students Younger than 21 ---");
 const youngStudents = students.filter(student => student.age < 21);
 console.table(youngStudents);
 
-// ============================================
 // Exercise 2: MAP METHOD
-// ============================================
 console.log("\n\n=== Exercise 2: MAP METHOD ===\n");
 
 // 2.1: Get array of student names
@@ -109,9 +103,7 @@ const studentSummary = students.map(({ name, grade, major }) => ({
 }));
 console.table(studentSummary);
 
-// ============================================
 // Exercise 3: REDUCE METHOD
-// ============================================
 console.log("\n\n=== Exercise 3: REDUCE METHOD ===\n");
 
 // 3.1: Calculate average grade
@@ -157,9 +149,7 @@ const groupedByStatus = students.reduce((acc, student) => {
 }, {});
 console.log(groupedByStatus);
 
-// ============================================
 // Exercise 4: SORT METHOD
-// ============================================
 console.log("\n\n=== Exercise 4: SORT METHOD ===\n");
 
 // 4.1: Sort by grade (ascending)
@@ -190,9 +180,7 @@ console.log("\n--- Sorted by GPA (Highest First) ---");
 const sortedByGPA = [...students].sort((a, b) => b.gpa - a.gpa);
 console.table(sortedByGPA.map(s => ({ name: s.name, gpa: s.gpa })));
 
-// ============================================
 // Exercise 5: SOME METHOD
-// ============================================
 console.log("\n\n=== Exercise 5: SOME METHOD ===\n");
 
 // 5.1: Check if any student has perfect grade (100)
@@ -215,9 +203,7 @@ console.log(`Any student older than 23? ${hasOlderStudent}`);
 const hasPhysicsMajor = students.some(student => student.major === "Physics");
 console.log(`Any Physics major? ${hasPhysicsMajor}`);
 
-// ============================================
 // Exercise 6: EVERY METHOD
-// ============================================
 console.log("\n\n=== Exercise 6: EVERY METHOD ===\n");
 
 // 6.1: Check if all students passed (grade >= 60)
@@ -240,9 +226,7 @@ console.log(`All students are adults (>= 18)? ${allAdults}`);
 const allHaveNames = students.every(student => student.name && student.name.length > 0);
 console.log(`All students have names? ${allHaveNames}`);
 
-// ============================================
 // Exercise 7: CHAINING METHODS
-// ============================================
 console.log("\n\n=== Exercise 7: CHAINING METHODS ===\n");
 
 // 7.1: Get names of active CS students with grade >= 85
@@ -277,9 +261,7 @@ const activeMajorCount = students
     }, {});
 console.table(activeMajorCount);
 
-// ============================================
 // Exercise 8: ADVANCED TRANSFORMATIONS
-// ============================================
 console.log("\n\n=== Exercise 8: ADVANCED TRANSFORMATIONS ===\n");
 
 // 8.1: Create grade distribution
@@ -320,9 +302,7 @@ const rankedStudents = students
     }));
 console.table(rankedStudents);
 
-// ============================================
 // CHALLENGE EXERCISES
-// ============================================
 console.log("\n\n=== CHALLENGE EXERCISES ===\n");
 
 // Challenge 1: Find students with above-average grade
