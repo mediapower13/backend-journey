@@ -5,9 +5,7 @@
 
 console.log("=== LOOP MASTERY EXERCISES ===\n");
 
-// ============================================
 // Exercise 1: Multiplication Table (For Loop)
-// ============================================
 console.log("--- Exercise 1: Multiplication Table (For Loop) ---");
 
 /**
@@ -38,9 +36,7 @@ function multiplicationTableFor(n) {
 // Run the function
 multiplicationTableFor(10);
 
-// ============================================
 // Exercise 2: Multiplication Table (While Loop)
-// ============================================
 console.log("\n\n--- Exercise 2: Multiplication Table (While Loop) ---");
 
 /**
@@ -77,9 +73,7 @@ function multiplicationTableWhile(n) {
 // Run the function
 multiplicationTableWhile(5);
 
-// ============================================
 // Exercise 3: Pattern Printing (Nested Loops)
-// ============================================
 console.log("\n\n--- Exercise 3: Pattern Printing ---");
 
 /**
@@ -127,9 +121,7 @@ function printPatterns() {
 
 printPatterns();
 
-// ============================================
 // Exercise 4: While Loop Counter Patterns
-// ============================================
 console.log("\n\n--- Exercise 4: While Loop Counter Patterns ---");
 
 /**
@@ -184,9 +176,7 @@ countUp(1, 10);
 countDown(10, 1);
 countByStep(0, 50, 5);
 
-// ============================================
 // Exercise 5: Nested While Loops
-// ============================================
 console.log("\n\n--- Exercise 5: Nested While Loops ---");
 
 /**
@@ -210,9 +200,7 @@ function generateGrid(rows, cols) {
 
 generateGrid(4, 4);
 
-// ============================================
 // Exercise 6: Do-While Loop Examples
-// ============================================
 console.log("\n\n--- Exercise 6: Do-While Loop ---");
 
 /**
@@ -242,9 +230,7 @@ function menuSimulation() {
 
 menuSimulation();
 
-// ============================================
 // Exercise 7: Loop Control (break & continue)
-// ============================================
 console.log("\n\n--- Exercise 7: Loop Control (break & continue) ---");
 
 /**
@@ -281,9 +267,7 @@ function printOnlyEven(start, end) {
 findFirstDivisibleBy7(10, 50);
 printOnlyEven(1, 20);
 
-// ============================================
 // Exercise 8: Performance Comparison
-// ============================================
 console.log("\n\n--- Exercise 8: Performance Comparison ---");
 
 /**
@@ -315,9 +299,7 @@ function compareLoopPerformance(iterations) {
 
 compareLoopPerformance(1000000);
 
-// ============================================
 // CHALLENGE EXERCISES
-// ============================================
 console.log("\n\n=== CHALLENGE EXERCISES ===\n");
 
 /**
