@@ -8,9 +8,7 @@ console.log("=".repeat(60));
 console.log("       OBJECT FUNDAMENTALS - USER OBJECT");
 console.log("=".repeat(60));
 
-// 
 // SECTION 1: USER OBJECT WITH NESTED PROPERTIES & METHODS
-// 
 console.log("\n📦 SECTION 1: Full User Object\n");
 
 const user = {
@@ -81,11 +79,9 @@ const user = {
     return `✅ "${normalized}" added! Hobbies: [${this.hobbies.join(", ")}]`;
   },
 
-  // 
   // METHOD 4: getAddress()
   // Returns the address in different formats
   // Options: "full" | "short" | "city"
-  // 
   getAddress(format = "full") {
     const { street, city, state, country, zipCode } = this.address;
     const formats = {
@@ -139,9 +135,7 @@ console.log("🔟  getAddress('short') :", user.getAddress("short"));
 console.log("1️⃣1️⃣ getAddress('city')  :", user.getAddress("city"));
 user.displayProfile();
 
-// ============================================================
 // SECTION 2: FACTORY FUNCTION
-// ============================================================
 console.log("\n🏭 SECTION 2: Factory Function — createUser()\n");
 
 function createUser(firstName, lastName, age, email, city, country) {
@@ -191,9 +185,7 @@ console.log("User1 hobbies:", user1.hobbies);
 console.log("User2 address:", user2.getAddress("short"));
 console.log("User3 name:", user3.getFullName());
 
-// ============================================================
 // SECTION 3: ES6 CLASS SYNTAX
-// ============================================================
 console.log("\n🎓 SECTION 3: ES6 Class — new UserClass()\n");
 
 class UserClass {
@@ -292,9 +284,7 @@ cu1.fullName = "Franklin Miller Jr";
 console.log("After set :", cu1.getFullName());
 console.log(UserClass.compareAge(cu1, cu2));
 
-// ============================================================
 // SECTION 4: OBJECT UTILITY METHODS
-// ============================================================
 console.log("\n🛠️  SECTION 4: Object Utility Methods\n");
 
 const sample = {
@@ -333,7 +323,6 @@ const x = "hello", y = 42;
 const shorthand = { x, y };
 console.log("Shorthand        :", shorthand);
 
-// ============================================================
 console.log("\n" + "=".repeat(60));
 console.log("✅  OBJECT FUNDAMENTALS COMPLETE");
 console.log("=".repeat(60));
