@@ -51,18 +51,14 @@ const user = {
     },
   },
 
-  // ----------------------------------------------------------
   // METHOD 1: getFullName()
   // Returns the user's full name as a single string
-  // ----------------------------------------------------------
   getFullName() {
     return `${this.firstName} ${this.lastName}`;
   },
 
-  // ----------------------------------------------------------
   // METHOD 2: incrementAge()
   // Increases the user's age by 1 or by a given amount
-  // ----------------------------------------------------------
   incrementAge(amount = 1) {
     if (typeof amount !== "number" || amount < 0) {
       return "❌ Invalid amount. Please provide a positive number.";
@@ -71,10 +67,8 @@ const user = {
     return `✅ Age updated to: ${this.age}`;
   },
 
-  // ----------------------------------------------------------
   // METHOD 3: addHobby()
   // Adds a new hobby if it doesn't already exist in the list
-  // ----------------------------------------------------------
   addHobby(hobby) {
     if (!hobby || typeof hobby !== "string") {
       return "❌ Invalid hobby. Please provide a valid string.";
@@ -103,9 +97,7 @@ const user = {
     return formats[format] ?? formats.full;
   },
 
-  // ----------------------------------------------------------
   // BONUS: getSummary() - Returns key info as an object
-  // ----------------------------------------------------------
   getSummary() {
     return {
       name:      this.getFullName(),
@@ -117,9 +109,7 @@ const user = {
     };
   },
 
-  // ----------------------------------------------------------
   // BONUS: displayProfile() - Pretty prints the user profile
-  // ----------------------------------------------------------
   displayProfile() {
     console.log("\n👤 USER PROFILE");
     console.log("-".repeat(42));
