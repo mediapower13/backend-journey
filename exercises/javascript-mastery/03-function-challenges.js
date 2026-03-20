@@ -5,9 +5,7 @@
 
 console.log("=== FUNCTION CHALLENGES ===\n");
 
-// ============================================
 // Challenge 1: isPalindrome Function
-// ============================================
 console.log("--- Challenge 1: Palindrome Checker ---\n");
 
 /**
@@ -43,9 +41,7 @@ testStrings.forEach(str => {
     console.log(`"${str}" => ${isPalindrome(str)}`);
 });
 
-// ============================================
 // Challenge 2: Alternative Palindrome Implementations
-// ============================================
 console.log("\n\n--- Challenge 2: Alternative Implementations ---\n");
 
 /**
@@ -106,9 +102,7 @@ console.log(`Two Pointers: ${isPalindromePointers(testWord)}`);
 console.log(`Recursive: ${isPalindromeRecursive(testWord)}`);
 console.log(`Loop: ${isPalindromeLoop(testWord)}`);
 
-// ============================================
 // Challenge 3: String Manipulation Functions
-// ============================================
 console.log("\n\n--- Challenge 3: String Manipulation ---\n");
 
 /**
@@ -172,9 +166,7 @@ console.log(`Capitalized: "${capitalizeWords(sampleText.toLowerCase())}"`);
 console.log(`No duplicates: "${removeDuplicates(sampleText)}"`);
 console.log(`Frequency:`, charFrequency(sampleText));
 
-// ============================================
 // Challenge 4: Number Functions
-// ============================================
 console.log("\n\n--- Challenge 4: Number Functions ---\n");
 
 /**
@@ -249,9 +241,7 @@ console.log("\nPerfect squares check:");
 console.log("\nSum of digits:");
 [123, 456, 789].forEach(n => console.log(`${n} => ${sumOfDigits(n)}`));
 
-// ============================================
 // Challenge 5: Array Functions
-// ============================================
 console.log("\n\n--- Challenge 5: Array Functions ---\n");
 
 /**
@@ -318,9 +308,7 @@ console.log("Flattened:", flattenArray(nested));
 console.log("\nChunked array:");
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8], 3));
 
-// ============================================
 // Challenge 6: Advanced String Functions
-// ============================================
 console.log("\n\n--- Challenge 6: Advanced Challenges ---\n");
 
 /**
@@ -379,9 +367,7 @@ console.log(`Word count: ${wordCount(sentence)}`);
 console.log(`\nTitle case: "${toTitleCase(sentence.toLowerCase())}"`);
 console.log(`Truncated (20): "${truncate(sentence, 20)}"`);
 
-// ============================================
 // Challenge 7: Object Functions
-// ============================================
 console.log("\n\n--- Challenge 7: Object Functions ---\n");
 
 /**
@@ -424,9 +410,7 @@ console.log("Merged:", merged);
 console.log(`Object size: ${objectSize(person)}`);
 console.log(`Is empty: ${isEmpty({})}`);
 
-// ============================================
 // FINAL CHALLENGE: Complex Function
-// ============================================
 console.log("\n\n--- FINAL CHALLENGE ---\n");
 
 /**
