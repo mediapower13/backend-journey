@@ -15,6 +15,7 @@ console.log("has user u9:", hasUser("u9"));
 deleteUser("u3");
 console.log("after delete u3:", [...userCache.keys()]);
 
+
 const wordFrequency = text => {
   const freq = new Map();
   text
