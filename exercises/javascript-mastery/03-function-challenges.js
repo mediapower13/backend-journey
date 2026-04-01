@@ -14,6 +14,7 @@ console.log("--- Challenge 1: Palindrome Checker ---\n");
  * @param {string} str - The string to check
  * @returns {boolean} - True if palindrome, false otherwise
  */
+
 function isPalindrome(str) {
     // Remove non-alphanumeric characters and convert to lowercase
     const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
