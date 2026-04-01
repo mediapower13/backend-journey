@@ -176,6 +176,7 @@ const sortedByAgeAndGrade = [...students].sort((a, b) => {
 });
 console.table(sortedByAgeAndGrade.map(s => ({ name: s.name, age: s.age, grade: s.grade })));
 
+
 // 4.5: Sort by GPA (descending)
 console.log("\n--- Sorted by GPA (Highest First) ---");
 const sortedByGPA = [...students].sort((a, b) => b.gpa - a.gpa);
