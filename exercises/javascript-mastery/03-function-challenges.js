@@ -1,452 +1,284 @@
 /**
- * FUNCTION CHALLENGES
- * Practice function creation, string manipulation, and problem-solving
+ * ASYNCHRONOUS JAVASCRIPT - CALLBACKS & PROMISES
+ * Backend Development using JavaScript
  */
 
-console.log("=== FUNCTION CHALLENGES ===\n");
+console.log("=== ASYNCHRONOUS JAVASCRIPT - CALLBACKS & PROMISES ===\n");
 
-// Challenge 1: isPalindrome Function
-console.log("--- Challenge 1: Palindrome Checker ---\n");
+// ------------------------------------------------------------
+// SECTION 1: Understanding Callbacks
+// ------------------------------------------------------------
+console.log("--- Section 1: Understanding Callbacks ---\n");
 
 /**
- * Check if a string is a palindrome
- * A palindrome reads the same forwards and backwards
- * @param {string} str - The string to check
- * @returns {boolean} - True if palindrome, false otherwise
+ * Simulate an async operation with callback.
+ * @param {string} taskName
+ * @param {number} delay
+ * @param {(result: string) => void} callback
  */
-
-function isPalindrome(str) {
-    // Remove non-alphanumeric characters and convert to lowercase
-    const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    
-    // Compare with reversed string
-    const reversed = cleaned.split('').reverse().join('');
-    
-    return cleaned === reversed;
+function asyncTaskWithCallback(taskName, delay, callback) {
+    setTimeout(() => {
+        callback(`Completed: ${taskName}`);
+    }, delay);
 }
 
-// Test cases
-const testStrings = [
-    "racecar",
-    "hello",
-    "A man, a plan, a canal: Panama",
-    "race a car",
-    "Was it a car or a cat I saw?",
-    "Madam",
-    "12321",
-    "12345"
-];
-
-console.log("Testing isPalindrome function:");
-testStrings.forEach(str => {
-    console.log(`"${str}" => ${isPalindrome(str)}`);
+console.log("1) Simulating async operation with callback:");
+asyncTaskWithCallback("Fetch users", 500, (result) => {
+    console.log(result);
 });
 
-// Challenge 2: Alternative Palindrome Implementations
-console.log("\n\n--- Challenge 2: Alternative Implementations ---\n");
+/**
+ * Callback hell demo: intentionally nested callbacks.
+ */
+function callbackHellDemo(done) {
+    asyncTaskWithCallback("Step 1: Read config", 300, (step1) => {
+        console.log(step1);
+
+        asyncTaskWithCallback("Step 2: Connect DB", 300, (step2) => {
+            console.log(step2);
+
+            asyncTaskWithCallback("Step 3: Query data", 300, (step3) => {
+                console.log(step3);
+
+                asyncTaskWithCallback("Step 4: Send response", 300, (step4) => {
+                    console.log(step4);
+                    console.log("Callback hell demo finished.\n");
+                    done();
+                });
+            });
+        });
+    });
+}
 
 /**
- * Check palindrome using two-pointer approach
+ * Error-first callback pattern.
+ * @param {number} a
+ * @param {number} b
+ * @param {(error: Error | null, result: number | null) => void} callback
  */
-function isPalindromePointers(str) {
-    const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    let left = 0;
-    let right = cleaned.length - 1;
-    
-    while (left < right) {
-        if (cleaned[left] !== cleaned[right]) {
-            return false;
+function divideAsync(a, b, callback) {
+    setTimeout(() => {
+        if (b === 0) {
+            callback(new Error("Cannot divide by zero"), null);
+            return;
         }
-        left++;
-        right--;
-    }
-    
-    return true;
+
+        callback(null, a / b);
+    }, 250);
 }
 
 /**
- * Check palindrome using recursion
+ * Minimal event emitter with on/off/emit.
  */
-function isPalindromeRecursive(str) {
-    const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    
-    function checkPalindrome(s) {
-        if (s.length <= 1) return true;
-        if (s[0] !== s[s.length - 1]) return false;
-        return checkPalindrome(s.slice(1, -1));
+class SimpleEventEmitter {
+    constructor() {
+        this.events = {};
     }
-    
-    return checkPalindrome(cleaned);
-}
 
-/**
- * Check palindrome using for loop
- */
-function isPalindromeLoop(str) {
-    const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    const len = cleaned.length;
-    
-    for (let i = 0; i < len / 2; i++) {
-        if (cleaned[i] !== cleaned[len - 1 - i]) {
-            return false;
+    on(eventName, listener) {
+        if (!this.events[eventName]) {
+            this.events[eventName] = [];
         }
+        this.events[eventName].push(listener);
     }
-    
-    return true;
-}
 
-console.log("Comparing different implementations:");
-const testWord = "A man, a plan, a canal: Panama";
-console.log(`String: "${testWord}"`);
-console.log(`Regular: ${isPalindrome(testWord)}`);
-console.log(`Two Pointers: ${isPalindromePointers(testWord)}`);
-console.log(`Recursive: ${isPalindromeRecursive(testWord)}`);
-console.log(`Loop: ${isPalindromeLoop(testWord)}`);
-
-// Challenge 3: String Manipulation Functions
-console.log("\n\n--- Challenge 3: String Manipulation ---\n");
-
-/**
- * Reverse a string
- */
-function reverseString(str) {
-    return str.split('').reverse().join('');
-}
-
-/**
- * Count vowels in a string
- */
-function countVowels(str) {
-    const vowels = 'aeiouAEIOU';
-    return str.split('').filter(char => vowels.includes(char)).length;
-}
-
-/**
- * Count consonants in a string
- */
-function countConsonants(str) {
-    const letters = str.toLowerCase().replace(/[^a-z]/g, '');
-    const vowels = 'aeiou';
-    return letters.split('').filter(char => !vowels.includes(char)).length;
-}
-
-/**
- * Capitalize first letter of each word
- */
-function capitalizeWords(str) {
-    return str
-        .split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-        .join(' ');
-}
-
-/**
- * Remove duplicates from string
- */
-function removeDuplicates(str) {
-    return [...new Set(str)].join('');
-}
-
-/**
- * Count character frequency
- */
-function charFrequency(str) {
-    return str.split('').reduce((freq, char) => {
-        freq[char] = (freq[char] || 0) + 1;
-        return freq;
-    }, {});
-}
-
-// Test string manipulation functions
-const sampleText = "Hello World";
-console.log(`Original: "${sampleText}"`);
-console.log(`Reversed: "${reverseString(sampleText)}"`);
-console.log(`Vowels: ${countVowels(sampleText)}`);
-console.log(`Consonants: ${countConsonants(sampleText)}`);
-console.log(`Capitalized: "${capitalizeWords(sampleText.toLowerCase())}"`);
-console.log(`No duplicates: "${removeDuplicates(sampleText)}"`);
-console.log(`Frequency:`, charFrequency(sampleText));
-
-// Challenge 4: Number Functions
-console.log("\n\n--- Challenge 4: Number Functions ---\n");
-
-/**
- * Check if number is prime
- */
-function isPrime(num) {
-    if (num <= 1) return false;
-    if (num <= 3) return true;
-    if (num % 2 === 0 || num % 3 === 0) return false;
-    
-    for (let i = 5; i * i <= num; i += 6) {
-        if (num % i === 0 || num % (i + 2) === 0) return false;
-    }
-    
-    return true;
-}
-
-/**
- * Generate Fibonacci sequence
- */
-function fibonacci(n) {
-    if (n <= 0) return [];
-    if (n === 1) return [0];
-    
-    const sequence = [0, 1];
-    for (let i = 2; i < n; i++) {
-        sequence.push(sequence[i - 1] + sequence[i - 2]);
-    }
-    
-    return sequence;
-}
-
-/**
- * Calculate factorial
- */
-function factorial(n) {
-    if (n < 0) return undefined;
-    if (n === 0 || n === 1) return 1;
-    return n * factorial(n - 1);
-}
-
-/**
- * Check if number is perfect square
- */
-function isPerfectSquare(num) {
-    return Math.sqrt(num) % 1 === 0;
-}
-
-/**
- * Sum of digits
- */
-function sumOfDigits(num) {
-    return Math.abs(num)
-        .toString()
-        .split('')
-        .reduce((sum, digit) => sum + parseInt(digit), 0);
-}
-
-// Test number functions
-console.log("Prime numbers from 1-20:");
-console.log(Array.from({ length: 20 }, (_, i) => i + 1).filter(isPrime));
-
-console.log("\nFirst 10 Fibonacci numbers:");
-console.log(fibonacci(10));
-
-console.log("\nFactorials:");
-[5, 6, 7].forEach(n => console.log(`${n}! = ${factorial(n)}`));
-
-console.log("\nPerfect squares check:");
-[16, 20, 25, 30].forEach(n => console.log(`${n} is perfect square: ${isPerfectSquare(n)}`));
-
-console.log("\nSum of digits:");
-[123, 456, 789].forEach(n => console.log(`${n} => ${sumOfDigits(n)}`));
-
-// Challenge 5: Array Functions
-console.log("\n\n--- Challenge 5: Array Functions ---\n");
-
-/**
- * Find maximum value in array
- */
-function findMax(arr) {
-    return Math.max(...arr);
-}
-
-/**
- * Find minimum value in array
- */
-function findMin(arr) {
-    return Math.min(...arr);
-}
-
-/**
- * Calculate average
- */
-function average(arr) {
-    return arr.reduce((sum, num) => sum + num, 0) / arr.length;
-}
-
-/**
- * Remove duplicates from array
- */
-function removeDuplicatesArray(arr) {
-    return [...new Set(arr)];
-}
-
-/**
- * Flatten nested array
- */
-function flattenArray(arr) {
-    return arr.flat(Infinity);
-}
-
-/**
- * Chunk array into smaller arrays
- */
-function chunkArray(arr, size) {
-    const chunks = [];
-    for (let i = 0; i < arr.length; i += size) {
-        chunks.push(arr.slice(i, i + size));
-    }
-    return chunks;
-}
-
-// Test array functions
-const numbers = [5, 2, 8, 1, 9, 3, 7, 4, 6];
-console.log("Array:", numbers);
-console.log("Max:", findMax(numbers));
-console.log("Min:", findMin(numbers));
-console.log("Average:", average(numbers).toFixed(2));
-
-const duplicates = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
-console.log("\nWith duplicates:", duplicates);
-console.log("Unique:", removeDuplicatesArray(duplicates));
-
-const nested = [1, [2, 3], [4, [5, 6]]];
-console.log("\nNested array:", nested);
-console.log("Flattened:", flattenArray(nested));
-
-console.log("\nChunked array:");
-console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8], 3));
-
-// Challenge 6: Advanced String Functions
-console.log("\n\n--- Challenge 6: Advanced Challenges ---\n");
-
-/**
- * Check if two strings are anagrams
- */
-function isAnagram(str1, str2) {
-    const clean1 = str1.toLowerCase().replace(/[^a-z]/g, '').split('').sort().join('');
-    const clean2 = str2.toLowerCase().replace(/[^a-z]/g, '').split('').sort().join('');
-    return clean1 === clean2;
-}
-
-/**
- * Find longest word in sentence
- */
-function longestWord(sentence) {
-    return sentence
-        .split(' ')
-        .reduce((longest, word) => word.length > longest.length ? word : longest, '');
-}
-
-/**
- * Title case a string
- */
-function toTitleCase(str) {
-    return str
-        .toLowerCase()
-        .split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-}
-
-/**
- * Truncate string
- */
-function truncate(str, maxLength) {
-    return str.length > maxLength ? str.slice(0, maxLength) + '...' : str;
-}
-
-/**
- * Count words in string
- */
-function wordCount(str) {
-    return str.trim().split(/\s+/).length;
-}
-
-// Test advanced functions
-console.log("Anagram check:");
-console.log(`"listen" & "silent": ${isAnagram("listen", "silent")}`);
-console.log(`"hello" & "world": ${isAnagram("hello", "world")}`);
-
-const sentence = "The quick brown fox jumps over the lazy dog";
-console.log(`\nSentence: "${sentence}"`);
-console.log(`Longest word: "${longestWord(sentence)}"`);
-console.log(`Word count: ${wordCount(sentence)}`);
-
-console.log(`\nTitle case: "${toTitleCase(sentence.toLowerCase())}"`);
-console.log(`Truncated (20): "${truncate(sentence, 20)}"`);
-
-// Challenge 7: Object Functions
-console.log("\n\n--- Challenge 7: Object Functions ---\n");
-
-/**
- * Deep clone an object
- */
-function deepClone(obj) {
-    return JSON.parse(JSON.stringify(obj));
-}
-
-/**
- * Merge two objects
- */
-function mergeObjects(obj1, obj2) {
-    return { ...obj1, ...obj2 };
-}
-
-/**
- * Get object keys count
- */
-function objectSize(obj) {
-    return Object.keys(obj).length;
-}
-
-/**
- * Check if object is empty
- */
-function isEmpty(obj) {
-    return Object.keys(obj).length === 0;
-}
-
-// Test object functions
-const person = { name: "John", age: 30, city: "New York" };
-const cloned = deepClone(person);
-console.log("Original:", person);
-console.log("Cloned:", cloned);
-
-const merged = mergeObjects(person, { job: "Developer", age: 31 });
-console.log("Merged:", merged);
-
-console.log(`Object size: ${objectSize(person)}`);
-console.log(`Is empty: ${isEmpty({})}`);
-
-// FINAL CHALLENGE: Complex Function
-console.log("\n\n--- FINAL CHALLENGE ---\n");
-
-/**
- * Validate password strength
- * Must contain: uppercase, lowercase, number, special char, min 8 chars
- */
-function validatePassword(password) {
-    const minLength = password.length >= 8;
-    const hasUpper = /[A-Z]/.test(password);
-    const hasLower = /[a-z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasSpecial = /[!@#$%^&*]/.test(password);
-    
-    const isValid = minLength && hasUpper && hasLower && hasNumber && hasSpecial;
-    
-    return {
-        valid: isValid,
-        checks: {
-            minLength,
-            hasUpper,
-            hasLower,
-            hasNumber,
-            hasSpecial
+    off(eventName, listener) {
+        if (!this.events[eventName]) {
+            return;
         }
-    };
+        this.events[eventName] = this.events[eventName].filter(fn => fn !== listener);
+    }
+
+    emit(eventName, payload) {
+        if (!this.events[eventName]) {
+            return;
+        }
+        this.events[eventName].forEach(listener => listener(payload));
+    }
 }
 
-// Test password validation
-const passwords = ["weak", "Better123", "Strong@123"];
-console.log("Password validation:");
-passwords.forEach(pwd => {
-    const result = validatePassword(pwd);
-    console.log(`\n"${pwd}":`);
-    console.log(`Valid: ${result.valid}`);
-    console.log("Checks:", result.checks);
+function runCallbackExamples(next) {
+    console.log("2) Callback hell with nested callbacks:");
+
+    callbackHellDemo(() => {
+        console.log("3) Error-first callback pattern:");
+
+        divideAsync(10, 2, (error, result) => {
+            if (error) {
+                console.error("Unexpected error:", error.message);
+            } else {
+                console.log("10 / 2 =", result);
+            }
+
+            divideAsync(10, 0, (secondError, secondResult) => {
+                if (secondError) {
+                    console.error("Handled error:", secondError.message);
+                } else {
+                    console.log("10 / 0 =", secondResult);
+                }
+
+                console.log("\n4) Simple event emitter:");
+                const emitter = new SimpleEventEmitter();
+
+                const onUserCreated = (payload) => {
+                    console.log(`Listener A -> User created: ${payload.username}`);
+                };
+
+                const auditListener = (payload) => {
+                    console.log(`Listener B -> Audit log for user id: ${payload.id}`);
+                };
+
+                emitter.on("userCreated", onUserCreated);
+                emitter.on("userCreated", auditListener);
+
+                emitter.emit("userCreated", { id: 101, username: "backend_dev" });
+
+                emitter.off("userCreated", auditListener);
+                emitter.emit("userCreated", { id: 102, username: "removed_listener_demo" });
+
+                console.log("\nCallbacks section complete.\n");
+                next();
+            });
+        });
+    });
+}
+
+// ------------------------------------------------------------
+// SECTION 2: Promise Fundamentals
+// ------------------------------------------------------------
+
+/**
+ * Create a promise from scratch.
+ * @param {boolean} shouldResolve
+ * @returns {Promise<string>}
+ */
+function createCustomPromise(shouldResolve) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (shouldResolve) {
+                resolve("Promise resolved successfully.");
+            } else {
+                reject(new Error("Promise rejected intentionally."));
+            }
+        }, 400);
+    });
+}
+
+/**
+ * Callback-style function to convert.
+ * @param {number} userId
+ * @param {(error: Error | null, result: object | null) => void} callback
+ */
+function fetchUserCallback(userId, callback) {
+    setTimeout(() => {
+        if (userId <= 0) {
+            callback(new Error("Invalid user id"), null);
+            return;
+        }
+
+        callback(null, {
+            id: userId,
+            name: "Alex",
+            role: "Backend Engineer"
+        });
+    }, 350);
+}
+
+/**
+ * Promise-based version converted from callback style.
+ * @param {number} userId
+ * @returns {Promise<object>}
+ */
+function fetchUserPromise(userId) {
+    return new Promise((resolve, reject) => {
+        fetchUserCallback(userId, (error, result) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(result);
+        });
+    });
+}
+
+/**
+ * Additional promise helpers for chaining.
+ */
+function fetchOrdersByUserId(userId) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve([
+                { orderId: 1, userId, total: 29.99 },
+                { orderId: 2, userId, total: 45.50 }
+            ]);
+        }, 300);
+    });
+}
+
+function calculateTotal(orders) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (!Array.isArray(orders)) {
+                reject(new Error("Orders must be an array"));
+                return;
+            }
+
+            const total = orders.reduce((sum, order) => sum + order.total, 0);
+            resolve(total);
+        }, 250);
+    });
+}
+
+function runPromiseExamples() {
+    console.log("--- Section 2: Promise Fundamentals ---\n");
+
+    console.log("1) Promise from scratch:");
+    return createCustomPromise(true)
+        .then((message) => {
+            console.log(message);
+            return createCustomPromise(false);
+        })
+        .catch((error) => {
+            console.error("Caught promise error:", error.message);
+        })
+        .then(() => {
+            console.log("\n2) Convert callback to promise:");
+            return fetchUserPromise(7)
+                .then((user) => {
+                    console.log("Fetched user:", user);
+                    return fetchUserPromise(-1);
+                })
+                .catch((error) => {
+                    console.error("Handled converted promise error:", error.message);
+                });
+        })
+        .then(() => {
+            console.log("\n3) Promise chaining with error handling:");
+
+            return fetchUserPromise(3)
+                .then((user) => {
+                    console.log("User loaded:", user.name);
+                    return fetchOrdersByUserId(user.id);
+                })
+                .then((orders) => {
+                    console.log("Orders loaded:", orders.length);
+                    return calculateTotal(orders);
+                })
+                .then((grandTotal) => {
+                    console.log("Grand total:", grandTotal.toFixed(2));
+                })
+                .then(() => calculateTotal(null))
+                .catch((error) => {
+                    console.error("Chaining error handled:", error.message);
+                });
+        })
+        .finally(() => {
+            console.log("\n=== ASYNC ASSIGNMENT COMPLETE ===");
+        });
+}
+
+runCallbackExamples(() => {
+    runPromiseExamples().catch((error) => {
+        console.error("Unexpected promise flow error:", error.message);
+    });
 });
-
-console.log("\n\n=== FUNCTION CHALLENGES COMPLETE ===");
