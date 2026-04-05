@@ -5,9 +5,7 @@
 
 console.log("=== ASYNCHRONOUS JAVASCRIPT - CALLBACKS & PROMISES ===\n");
 
-// ------------------------------------------------------------
 // SECTION 1: Understanding Callbacks
-// ------------------------------------------------------------
 console.log("--- Section 1: Understanding Callbacks ---\n");
 
 /**
@@ -143,9 +141,7 @@ function runCallbackExamples(next) {
     });
 }
 
-//
 // SECTION 2: Promise Fundamentals
-//
 
 /**
  * Create a promise from scratch.
