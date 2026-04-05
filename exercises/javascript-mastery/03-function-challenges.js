@@ -143,9 +143,9 @@ function runCallbackExamples(next) {
     });
 }
 
-// ------------------------------------------------------------
+//
 // SECTION 2: Promise Fundamentals
-// ------------------------------------------------------------
+//
 
 /**
  * Create a promise from scratch.
