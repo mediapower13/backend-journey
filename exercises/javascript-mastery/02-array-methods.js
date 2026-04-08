@@ -1,7 +1,5 @@
 /**
  * ARRAY METHODS PRACTICE
- * 
- * 
  * Work with student dataset to master filter, map, reduce, sort, some, every
  */
 
