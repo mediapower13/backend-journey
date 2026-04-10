@@ -69,7 +69,7 @@ function multiplicationTableWhile(n) {
         row++;
     }
 }
-
+..
 // Run the function
 multiplicationTableWhile(5);
 
