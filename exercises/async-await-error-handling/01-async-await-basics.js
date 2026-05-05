@@ -1,5 +1,5 @@
 
-console.log("=== ASYNC/AWAIT & ERROR HANDLING ===\n");
+ console.log("=== ASYNC/AWAIT & ERROR HANDLING ===\n");
 
 function fetchProfileWithPromise(userId) {
     return new Promise((resolve, reject) => {
