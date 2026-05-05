@@ -1,0 +1,9 @@
+{
+  "name": "backend-journey",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test-examples": "node exercises/events-streams-buffers/01-event-emitter-basics.js && node exercises/events-streams-buffers/02-buffers.js && node exercises/events-streams-buffers/03-streams.js",
+    "run-log-processor": "node projects/log-processor/index.js projects/log-processor/sample.log projects/log-processor/filtered.log INFO"
+  }
+}
