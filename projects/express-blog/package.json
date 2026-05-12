@@ -1,0 +1,10 @@
+{
+  "name": "express-blog",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node projects/express-blog/index.js",
+    "seed": "node projects/express-blog/seed.js"
+  }
+}
