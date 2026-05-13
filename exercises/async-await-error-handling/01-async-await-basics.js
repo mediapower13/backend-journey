@@ -30,6 +30,7 @@ function fetchPosts(userId) {
     });
 }
 
+
 function fetchNotifications(userId) {
     return new Promise((resolve) => {
         setTimeout(() => {
